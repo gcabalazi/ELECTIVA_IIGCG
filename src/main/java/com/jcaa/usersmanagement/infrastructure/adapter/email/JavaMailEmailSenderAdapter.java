@@ -25,6 +25,10 @@ public class JavaMailEmailSenderAdapter implements EmailSenderPort {
   private static final String MAIL_SMTP_PORT = "mail.smtp.port";
   private static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
   private static final String MAIL_SMTP_STARTTLS = "mail.smtp.starttls.enable";
+  private static final String MAIL_SMTP_CONNECTIONTIMEOUT = "mail.smtp.connectiontimeout";
+  private static final String MAIL_SMTP_TIMEOUT = "mail.smtp.timeout";
+  private static final String MAIL_SMTP_WRITETIMEOUT = "mail.smtp.writetimeout";
+  private static final String TIMEOUT_MS = "5000";
   private static final String CONTENT_TYPE_HTML = "text/html; charset=UTF-8";
   private static final String CHARSET_UTF8 = "UTF-8";
   private static final String LOG_SENT = "[JavaMailEmailSenderAdapter] correo enviado exitosamente.";
@@ -82,6 +86,9 @@ public class JavaMailEmailSenderAdapter implements EmailSenderPort {
     properties.put(MAIL_SMTP_PORT, String.valueOf(config.port()));
     properties.put(MAIL_SMTP_AUTH, "true");
     properties.put(MAIL_SMTP_STARTTLS, "true");
+    properties.put(MAIL_SMTP_CONNECTIONTIMEOUT, TIMEOUT_MS);
+    properties.put(MAIL_SMTP_TIMEOUT, TIMEOUT_MS);
+    properties.put(MAIL_SMTP_WRITETIMEOUT, TIMEOUT_MS);
     return properties;
   }
 }
